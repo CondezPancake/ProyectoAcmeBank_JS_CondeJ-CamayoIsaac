@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    <title>AcmeBank</title>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="logo">
+                <h1>AcmeBank</h1>
+            </div>
+            <nav class="user-nav">
+                <span>🔔 Notificaciones</span>
+                <span>👤 Mi perfil</span>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="./Data/Images/logo.png" alt="AcmeLogo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">🏠 Inicio</a></li>
+                    <li><a href="#">📊 Transacciones</a></li>
+                    <li><a href="#">👥 Equipo</a></li>
+                    <li><a href="#">⚙️ Ajustes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <h2>Bienvenido de nuevo</h2>
+                <p>Aqui tienes el estado actual de tus grupos de desarrollo</p>
+            </section>
+
+            <section class="stats-grid">
+                <div class="card">
+                    <h3>Tareas Pendientes</h3>
+                    <p class="stat-number">12</p>
+                </div>
+                <div class="card">
+                    <h3>En Progreso</h3>
+                    <p class="stat-number">5</p>
+                </div>
+                <div class="card">
+                    <h3>Terminadas</h3>
+                    <p class="stat-number">48</p>
+                </div>
+            </section>
+
+            <section class="project-details card">
+                <h2>Detalles del Proyecto: Sprint 6</h2>
+                <p>El objetivo de este sprint es finalizar la integracion de la API con el 
+                    frontend usando <strong>Fetch API</strong> y asegurar que el diseño sea totalmente
+                    <strong>responsive</strong>.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;">75%   </div>
+                </div>
+
+            </section>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2026 AcmeBank - Campuslands</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,277 @@
+{
+    "usuarios": [
+      {
+        "id": "u1",
+        "tipoId": "CC",
+        "numeroId": "1001",
+        "nombres": "Carlos",
+        "apellidos": "Gomez",
+        "genero": "M",
+        "telefono": "3001111111",
+        "correo": "carlos@mail.com",
+        "direccion": "Calle 1",
+        "ciudad": "Cucuta",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10001",
+          "saldo": 1500000,
+          "fechaCreacion": "2026-04-01"
+        }
+      },
+      {
+        "id": "u2",
+        "tipoId": "CC",
+        "numeroId": "1002",
+        "nombres": "Laura",
+        "apellidos": "Martinez",
+        "genero": "F",
+        "telefono": "3002222222",
+        "correo": "laura@mail.com",
+        "direccion": "Calle 2",
+        "ciudad": "Bogota",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10002",
+          "saldo": 850000,
+          "fechaCreacion": "2026-04-02"
+        }
+      },
+      {
+        "id": "u3",
+        "tipoId": "CC",
+        "numeroId": "1003",
+        "nombres": "Andres",
+        "apellidos": "Lopez",
+        "genero": "M",
+        "telefono": "3003333333",
+        "correo": "andres@mail.com",
+        "direccion": "Calle 3",
+        "ciudad": "Medellin",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10003",
+          "saldo": 2300000,
+          "fechaCreacion": "2026-04-03"
+        }
+      },
+      {
+        "id": "u4",
+        "tipoId": "CC",
+        "numeroId": "1004",
+        "nombres": "Sofia",
+        "apellidos": "Ramirez",
+        "genero": "F",
+        "telefono": "3004444444",
+        "correo": "sofia@mail.com",
+        "direccion": "Calle 4",
+        "ciudad": "Cali",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10004",
+          "saldo": 1200000,
+          "fechaCreacion": "2026-04-04"
+        }
+      },
+      {
+        "id": "u5",
+        "tipoId": "CC",
+        "numeroId": "1005",
+        "nombres": "Juan",
+        "apellidos": "Perez",
+        "genero": "M",
+        "telefono": "3005555555",
+        "correo": "juan@mail.com",
+        "direccion": "Calle 5",
+        "ciudad": "Barranquilla",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10005",
+          "saldo": 670000,
+          "fechaCreacion": "2026-04-05"
+        }
+      },
+      {
+        "id": "u6",
+        "tipoId": "CC",
+        "numeroId": "1006",
+        "nombres": "Valentina",
+        "apellidos": "Castro",
+        "genero": "F",
+        "telefono": "3006666666",
+        "correo": "valentina@mail.com",
+        "direccion": "Calle 6",
+        "ciudad": "Cartagena",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10006",
+          "saldo": 910000,
+          "fechaCreacion": "2026-04-06"
+        }
+      },
+      {
+        "id": "u7",
+        "tipoId": "CC",
+        "numeroId": "1007",
+        "nombres": "Miguel",
+        "apellidos": "Torres",
+        "genero": "M",
+        "telefono": "3007777777",
+        "correo": "miguel@mail.com",
+        "direccion": "Calle 7",
+        "ciudad": "Bucaramanga",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10007",
+          "saldo": 3000000,
+          "fechaCreacion": "2026-04-07"
+        }
+      },
+      {
+        "id": "u8",
+        "tipoId": "CC",
+        "numeroId": "1008",
+        "nombres": "Camila",
+        "apellidos": "Rojas",
+        "genero": "F",
+        "telefono": "3008888888",
+        "correo": "camila@mail.com",
+        "direccion": "Calle 8",
+        "ciudad": "Pereira",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10008",
+          "saldo": 450000,
+          "fechaCreacion": "2026-04-08"
+        }
+      },
+      {
+        "id": "u9",
+        "tipoId": "CC",
+        "numeroId": "1009",
+        "nombres": "Daniel",
+        "apellidos": "Herrera",
+        "genero": "M",
+        "telefono": "3009999999",
+        "correo": "daniel@mail.com",
+        "direccion": "Calle 9",
+        "ciudad": "Manizales",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10009",
+          "saldo": 780000,
+          "fechaCreacion": "2026-04-09"
+        }
+      },
+      {
+        "id": "u10",
+        "tipoId": "CC",
+        "numeroId": "1010",
+        "nombres": "Paula",
+        "apellidos": "Diaz",
+        "genero": "F",
+        "telefono": "3010000000",
+        "correo": "paula@mail.com",
+        "direccion": "Calle 10",
+        "ciudad": "Ibague",
+        "password": "1234",
+        "cuenta": {
+          "numero": "AC10010",
+          "saldo": 990000,
+          "fechaCreacion": "2026-04-10"
+        }
+      }
+    ],
+  
+    "transacciones": [
+      {
+        "id": "t1",
+        "numeroCuenta": "AC10001",
+        "fecha": "2026-04-05",
+        "referencia": "REF001",
+        "tipo": "consignacion",
+        "descripcion": "Consignación por canal electrónico",
+        "valor": 500000
+      },
+      {
+        "id": "t2",
+        "numeroCuenta": "AC10001",
+        "fecha": "2026-04-06",
+        "referencia": "REF002",
+        "tipo": "retiro",
+        "descripcion": "Retiro de dinero",
+        "valor": 200000
+      },
+      {
+        "id": "t3",
+        "numeroCuenta": "AC10002",
+        "fecha": "2026-04-06",
+        "referencia": "REF003",
+        "tipo": "retiro",
+        "descripcion": "Pago de servicio público Energía",
+        "valor": 150000
+      },
+      {
+        "id": "t4",
+        "numeroCuenta": "AC10003",
+        "fecha": "2026-04-07",
+        "referencia": "REF004",
+        "tipo": "consignacion",
+        "descripcion": "Consignación por canal electrónico",
+        "valor": 800000
+      },
+      {
+        "id": "t5",
+        "numeroCuenta": "AC10004",
+        "fecha": "2026-04-07",
+        "referencia": "REF005",
+        "tipo": "retiro",
+        "descripcion": "Retiro de dinero",
+        "valor": 100000
+      },
+      {
+        "id": "t6",
+        "numeroCuenta": "AC10005",
+        "fecha": "2026-04-08",
+        "referencia": "REF006",
+        "tipo": "retiro",
+        "descripcion": "Pago de servicio público Agua",
+        "valor": 70000
+      },
+      {
+        "id": "t7",
+        "numeroCuenta": "AC10006",
+        "fecha": "2026-04-08",
+        "referencia": "REF007",
+        "tipo": "consignacion",
+        "descripcion": "Consignación por canal electrónico",
+        "valor": 300000
+      },
+      {
+        "id": "t8",
+        "numeroCuenta": "AC10007",
+        "fecha": "2026-04-09",
+        "referencia": "REF008",
+        "tipo": "retiro",
+        "descripcion": "Pago de servicio público Internet",
+        "valor": 120000
+      },
+      {
+        "id": "t9",
+        "numeroCuenta": "AC10008",
+        "fecha": "2026-04-09",
+        "referencia": "REF009",
+        "tipo": "retiro",
+        "descripcion": "Retiro de dinero",
+        "valor": 50000
+      },
+      {
+        "id": "t10",
+        "numeroCuenta": "AC10009",
+        "fecha": "2026-04-09",
+        "referencia": "REF010",
+        "tipo": "consignacion",
+        "descripcion": "Consignación por canal electrónico",
+        "valor": 400000
+      }
+    ]
+  }
