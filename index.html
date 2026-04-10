@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login AcmeBank</title>
+    <script type="module" src="/JS/auth/login.js" defer></script>
 </head>
 <body>
-    
+    <form class="formulario">
+        <select class="tipoDoc" name="tipoDoc">
+            <option value="" disabled selected>tipo de documento</option>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ti">Tarjeta de identidad</option>
+            <option value="ce">Cédula de extranjería</option>
+            <option value="pasaporte">Pasaporte</option>
+        </select>
+
+        <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <input type="password" class="password" placeholder="Contraseña">
+
+        <button class="btnSubmit" type="submit">Iniciar sesión</button>
+        <button class="btnRegistro" href="register.html">registrar</button>
+
+        <a href="recovery.html">¿olvido su contraseña?
+            
+        </a>
+    </form>
 </body>
 </html>

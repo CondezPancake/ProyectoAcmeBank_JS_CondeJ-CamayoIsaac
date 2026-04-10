@@ -6,6 +6,32 @@
     <title>Registro De Usuario AcmeBank</title>
 </head>
 <body>
-    
+    <form>
+        <form class="formulario">
+        <select class="tipoDoc" name="tipoDoc">
+            <option value="" disabled selected>tipo de documento</option>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ti">Tarjeta de identidad</option>
+            <option value="ce">Cédula de extranjería</option>
+            <option value="pasaporte">Pasaporte</option>
+        </select>
+
+        <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <input type="text" class="nombres" placeholder="nombres">
+        <input type="text" class="apellidos" placeholder="apellidos">
+        <select class="genero">
+            <option value="" disabled selected>genero</option>
+            <option value="M">masculino</option>
+            <option value="F">femino</option>
+            <option value="Other">otro</option>
+        </select>
+        <input type="number" class="numeroTel" placeholder="Numero de telefono">
+        <input type="email" class="email" placeholder="Email">
+        <input type="text" class="direccion" placeholder="Direccion">
+        <input type="text" class="ciudad" placeholder="Ciudad de residencia">        
+        <input type="password" class="password" placeholder="Contraseña"> 
+        
+        <button type="submit">registrarse</button>
+    </form>
 </body>
 </html>

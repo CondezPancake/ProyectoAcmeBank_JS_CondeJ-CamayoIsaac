@@ -6,6 +6,26 @@
     <title>Recuperación Cuenta</title>
 </head>
 <body>
-    
+    <form>
+        <select class="tipoDoc" name="tipoDoc">
+            <option value="" disabled selected>tipo de documento</option>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ti">Tarjeta de identidad</option>
+            <option value="ce">Cédula de extranjería</option>
+            <option value="pasaporte">Pasaporte</option>
+        </select>
+        <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <input type="email" class="email" placeholder="Email">
+
+        <button type="submit">Recuperar Contraseña</button>
+        <button href="index.html">cancelar</button>
+    </form>
+
+    <div hidden>
+        <form>
+            <input type="text" placeholder="ingrese una nueva contraseña">
+            <input type="text" placeholder="ingrese la nueva contraseña nuevamente">
+        </form>
+    </div>
 </body>
 </html>
