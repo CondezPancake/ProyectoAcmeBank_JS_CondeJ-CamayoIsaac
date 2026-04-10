@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login AcmeBank</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/login.css">
     <script type="module" src="/JS/auth/login.js" defer></script>
 </head>
 <body>
@@ -15,16 +17,19 @@
             <option value="ce">Cédula de extranjería</option>
             <option value="pasaporte">Pasaporte</option>
         </select>
+        <p class="error" id="errorTipoDoc"></p>
 
         <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <p class="error" id="errorNumDoc"></p>
+
         <input type="password" class="password" placeholder="Contraseña">
+        <p class="error" id="errorPassword"></p>
+
 
         <button class="btnSubmit" type="submit">Iniciar sesión</button>
-        <button class="btnRegistro" href="register.html">registrar</button>
+        <button class="btnRegistro" href="/register.html">registrar</button>
 
-        <a href="recovery.html">¿olvido su contraseña?
-            
-        </a>
+        <button href="/recovery.html">¿olvido su contraseña?</button>
     </form>
 </body>
 </html>

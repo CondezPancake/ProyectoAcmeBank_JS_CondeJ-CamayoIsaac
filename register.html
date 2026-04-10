@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro De Usuario AcmeBank</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/register.css">
+    <script src="/JS/auth/register.js"></script>
 </head>
 <body>
     <form>
@@ -15,21 +18,41 @@
             <option value="ce">Cédula de extranjería</option>
             <option value="pasaporte">Pasaporte</option>
         </select>
+        <p class="error" id="errorTipoDoc"></p>
+
 
         <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <p class="error" id="errorNumDoc"></p>
+
         <input type="text" class="nombres" placeholder="nombres">
+        <p class="error" id="errorNombres"></p>
+
         <input type="text" class="apellidos" placeholder="apellidos">
+        <p class="error" id="errorApellidos"></p>
+
         <select class="genero">
             <option value="" disabled selected>genero</option>
             <option value="M">masculino</option>
             <option value="F">femino</option>
             <option value="Other">otro</option>
         </select>
+        <p class="error" id="errorGenero"></p>
+
         <input type="number" class="numeroTel" placeholder="Numero de telefono">
+        <p class="error" id="errorTelefono"></p>
+
         <input type="email" class="email" placeholder="Email">
+        <p class="error" id="errorEmail"></p>
+
         <input type="text" class="direccion" placeholder="Direccion">
-        <input type="text" class="ciudad" placeholder="Ciudad de residencia">        
+        <p class="error" id="errorDireccion"></p>
+
+        <input type="text" class="ciudad" placeholder="Ciudad de residencia">     
+        <p class="error" id="errorCiudad"></p>
+   
         <input type="password" class="password" placeholder="Contraseña"> 
+        <p class="error" id="errorTipoDoc"></p>
+
         
         <button type="submit">registrarse</button>
     </form>

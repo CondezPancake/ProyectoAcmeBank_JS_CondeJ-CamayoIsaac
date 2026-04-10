@@ -1,0 +1,155 @@
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: rgb(3, 3, 54);
+    color: var(--text-main);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* ==========================================================================
+   2. LAYOUT (FORM CONTAINER)
+   ========================================================================== */
+.formulario {
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Ritmo vertical constante */
+}
+
+/* Título implícito o cabecera visual */
+.formulario::before {
+    content: "AcmeBank";
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   3. FORM ELEMENTS (INPUTS & SELECTS)
+   ========================================================================== */
+.tipoDoc, 
+.numeroDoc, 
+.password {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: calc(var(--radius) / 1.5);
+    background-color: #fff;
+    color: var(--text-main);
+    transition: var(--transition);
+    outline: none;
+}
+
+/* Accesibilidad y Feedback visual */
+.tipoDoc:focus, 
+.numeroDoc:focus, 
+.password:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.tipoDoc {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+/* Mensajes de Error */
+.error {
+    color: var(--error);
+    font-size: 0.813rem;
+    min-height: 1.2rem; /* Evita saltos de layout cuando aparece el texto */
+    margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   4. BUTTONS & LINKS
+   ========================================================================== */
+.btnSubmit {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+    border-radius: calc(var(--radius) / 1.5);
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.btnSubmit:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.btnSubmit:active {
+    transform: translateY(0);
+}
+
+.btnRegistro {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.75rem;
+    border-radius: calc(var(--radius) / 1.5);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.btnRegistro:hover {
+    background-color: rgba(30, 58, 138, 0.04);
+}
+
+a {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   5. MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablets y Desktop */
+@media (min-width: 768px) {
+    .formulario {
+        padding: 3rem;
+    }
+}
+
+/* Ajustes para modo oscuro (opcional pero recomendado en Fintech) */
+@media (prefers-color-scheme: dark) {
+    /* Si se requiere implementar, se cambiarían las variables aquí */
+}

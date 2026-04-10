@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperación Cuenta</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/recovery.css">
+    <script src="/JS/auth/recovery.js" defer></script>
 </head>
 <body>
     <form>
@@ -18,7 +21,7 @@
         <input type="email" class="email" placeholder="Email">
 
         <button type="submit">Recuperar Contraseña</button>
-        <button href="index.html">cancelar</button>
+        <button href="/index.html">cancelar</button>
     </form>
 
     <div hidden>
@@ -26,6 +29,8 @@
             <input type="text" placeholder="ingrese una nueva contraseña">
             <input type="text" placeholder="ingrese la nueva contraseña nuevamente">
         </form>
+
+        <button type="submit" class="btnRecovery" href="/index.html">Cambiar Contraseña</button>
     </div>
 </body>
 </html>

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   1. RESET & BASE
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(3, 3, 54);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* ==========================================================================
+   2. LAYOUT & CONTAINER
+   ========================================================================== */
+/* Aplica tanto al form principal como al div de cambio de contraseña */
+form, div:not([hidden]) {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeIn 0.5s ease;
+}
+
+form::before {
+    content: "Recuperar Acceso";
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   3. FORM ELEMENTS
+   ========================================================================== */
+input, select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: #fff;
+    transition: var(--transition);
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+/* Select personalizado */
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+}
+
+/* ==========================================================================
+   4. BUTTONS (Jerarquía de Acciones)
+   ========================================================================== */
+button[type="submit"], .btnRecovery {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button[type="submit"]:hover, .btnRecovery:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+/* Botón Cancelar (Estilo secundario/fantasma) */
+button:not([type="submit"]):not(.btnRecovery) {
+    background-color: transparent;
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:not([type="submit"]):not(.btnRecovery):hover {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    border-color: var(--secondary);
+}
+
+/* ==========================================================================
+   5. UTILITIES & ANIMATIONS
+   ========================================================================== */
+[hidden] {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form, div:not([hidden]) {
+        padding: 1.5rem;
+    }
+}

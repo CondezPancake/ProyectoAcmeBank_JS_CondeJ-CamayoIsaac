@@ -1,3 +1,21 @@
+:root {
+    --primary: #1E3A8A;
+    --primary-dark: #1E40AF;
+    --secondary: #64748b;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --sidebar: 260px;
+    --transition: all 0.3s ease;
+    --radius: 12px;
+    --bg-sidebar: #192747;
+    --success: #10B981;
+    --error: #EF4444;
+    --warning: #F59E0B;
+    --border: #E5E7EB;
+}
+
 * {
     margin: 0;
     padding: 0;

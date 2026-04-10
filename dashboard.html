@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/dashboard.css">
+    <script src="JS/core/utils.js" defer></script>
+    <script src="JS/core/session.js" defer></script>
+    <script src="JS/dashboard/dashboard.js" defer></script>
     <title>AcmeBank</title>
 </head>
 <body>
@@ -13,22 +16,57 @@
                 <h1>AcmeBank</h1>
             </div>
             <nav class="user-nav">
-                <span>🔔 Notificaciones</span>
-                <span>👤 Mi perfil</span>
+                <span id="notificationToggle">🔔 Notificaciones</span>
+                <span id="profileToggle">👤 Mi perfil</span>
             </nav>
+
+            <div class="notifications-panel" id="notificationsPanel">
+                <h3>Notificaciones</h3>
+                <div class="notification-item">
+                    <strong>Bienvenido a AcmeBank</strong>
+                    <p>Tu cuenta está activa y lista para usarse.</p>
+                </div>
+                <div class="notification-item">
+                    <strong>Estado del sistema</strong>
+                    <p>No tienes movimientos nuevos por ahora.</p>
+                </div>
+                <button id="closeNotifications">Cerrar</button>
+            </div>
+
+            <div class="profile-panel" id="profilePanel">
+                <h3>Mi perfil</h3>
+                <form id="profileForm">
+                    <label for="profileName">Nombre</label>
+                    <input type="text" id="profileName" placeholder="Tu nombre">
+
+                    <label for="profileEmail">Correo</label>
+                    <input type="email" id="profileEmail" placeholder="correo@ejemplo.com">
+
+                    <label for="profilePhone">Teléfono</label>
+                    <input type="text" id="profilePhone" placeholder="3001234567">
+
+                    <button type="submit">Guardar cambios</button>
+                </form>
+                <button id="closeProfile">Cerrar</button>
+            </div>
         </header>
 
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <img src="./Data/Images/logo.png" alt="AcmeLogo">
+                <img src="Data/Images/logo.png" alt="AcmeLogo">
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">🏠 Inicio</a></li>
-                    <li><a href="#">📊 Transacciones</a></li>
-                    <li><a href="#">👥 Equipo</a></li>
-                    <li><a href="#">⚙️ Ajustes</a></li>
-                </ul>
+                    <li id="goInicio">🏠 Inicio</li>
+                    <li id="goCuentas">💳 Cuentas</li>
+                    <li>🔄 Transacciones</li>
+                    <li>➕ Consignar</li>
+                    <li>➖ Retirar</li>
+                    <li>🧾 Servicios</li>
+                    <li>📄 Quienes Somos</li>
+                    <li id="goSettings">⚙️ Ajustes</li>
+                    <li id="logoutBtn">🚪Cerrar Sesión</li>
+    
             </nav>
         </aside>
 
@@ -40,33 +78,35 @@
 
             <section class="stats-grid">
                 <div class="card">
-                    <h3>Tareas Pendientes</h3>
-                    <p class="stat-number">12</p>
+                    <h3>Pagar Facturas</h3>
+                    <p class="stat-number">Click aqui</p>
                 </div>
                 <div class="card">
-                    <h3>En Progreso</h3>
-                    <p class="stat-number">5</p>
+                    <h3>Obtener extracto</h3>
+                    <p class="stat-number">Click aqui</p>
                 </div>
                 <div class="card">
-                    <h3>Terminadas</h3>
-                    <p class="stat-number">48</p>
+                    <h3>Pagar Facturas</h3>
+                    <p class="stat-number">Click aqui</p>
                 </div>
             </section>
 
             <section class="project-details card">
-                <h2>Detalles del Proyecto: Sprint 6</h2>
-                <p>El objetivo de este sprint es finalizar la integracion de la API con el 
-                    frontend usando <strong>Fetch API</strong> y asegurar que el diseño sea totalmente
-                    <strong>responsive</strong>.</p>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 75%;">75%   </div>
-                </div>
+                <h2>CUENTA DE AHORROS</h2>
+                <p>187-7698-989</p>
+                <div class="Saldo"></div>
+                <p><strong>Saldo actual:</strong> $586,390</p>
+            </section>
 
+            <section class="Promotions">
+                <div class="Container-Promotions"></div>
             </section>
         </main>
+
         <footer class="footer">
             <p>&copy; 2026 AcmeBank - Campuslands</p>
         </footer>
     </div>
+
 </body>
 </html>

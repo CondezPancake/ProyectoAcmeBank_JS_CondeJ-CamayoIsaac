@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/settings.css">
+    <title>AcmeBank - Settings</title>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="logo">
+                <h1>AcmeBank</h1>
+            </div>
+            <nav class="user-nav">
+                <span>🔔 Notificaciones</span>
+                <span>👤 Mi perfil</span>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="./Data/Images/logoAcme.png" alt="AcmeLogo">
+            </div>
+            <nav>
+                <ul>
+                    <li id="backDashboard">🏠 Inicio</li>
+                    <li id="goCuentas">💳 Cuentas</li>
+                    <li>🔄 Transacciones</li>
+                    <li>➕ Consignar</li>
+                    <li>➖ Retirar</li>
+                    <li>🧾 Servicios</li>
+                    <li>📄 Quienes Somos</li>
+                    <li>⚙️ Ajustes</li>
+                    <li id="logoutBtn">🚪Cerrar Sesión</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <h2>Settings</h2>
+                <p>Manage your visual settings</p>
+            </section>
+
+            <section class="settings-grid">
+                <div class="card">
+                    <h3>Seguridad</h3>
+                    <p>Cambiar contraseña</p>
+                </div>
+
+                <div class="card">
+                    <h3>Notificaciones</h3>
+                    <p>Administrar alertas</p>
+                </div>
+
+                <div class="card">
+                    <h3>Perfil</h3>
+                    <p>Editar información personal</p>
+                </div>
+
+                <div class="card">
+                    <h3>Privacidad</h3>
+                    <p>Configurar visibilidad</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 AcmeBank - Campuslands</p>
+        </footer>
+    </div>
+
+    <script src="JS/core/session.js"></script>
+    <script src="JS/dashboard/settings.js"></script>
+</body>
+</html>

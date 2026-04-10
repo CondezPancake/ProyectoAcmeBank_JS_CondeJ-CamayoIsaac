@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/accounts.css">
+    <title>AcmeBank - Accounts</title>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <div class="logo">
+                <h1>AcmeBank</h1>
+            </div>
+            <nav class="user-nav">
+                <span>🔔 Notificaciones</span>
+                <span>👤 Mi perfil</span>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="./Data/Images/logoAcme.png" alt="AcmeLogo">
+            </div>
+            <nav>
+                <ul>
+                    <li id="backDashboard">🏠 Inicio</li>
+                    <li>💳 Cuentas</li>
+                    <li>🔄 Transacciones</li>
+                    <li>➕ Consignar</li>
+                    <li>➖ Retirar</li>
+                    <li>🧾 Servicios</li>
+                    <li>📄 Quienes Somos</li>
+                    <li id="goSettings">⚙️ Ajustes</li>
+                    <li id="logoutBtn">🚪Cerrar Sesión</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <h2>Your Accounts</h2>
+                <p>Here you can view your visual account summary</p>
+            </section>
+
+            <section class="stats-grid">
+                <div class="card main-account-card">
+                    <h2>Cuenta de Ahorros</h2>
+                    <p>Account number: 187-7698-989</p>
+                    <p><strong>Available balance:</strong> $586,390</p>
+                </div>
+
+                <div class="card">
+                    <h3>Pedir tarjeta de crédito</h3>
+                    <p class="stat-number">Click aqui</p>
+                </div>
+
+                <div class="card">
+                    <h3>Pedir tarjeta débito</h3>
+                    <p class="stat-number">Click aqui</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 AcmeBank - Campuslands</p>
+        </footer>
+    </div>
+
+    <script src="JS/core/session.js"></script>
+    <script src="JS/dashboard/accounts.js"></script>
+</body>
+</html>
