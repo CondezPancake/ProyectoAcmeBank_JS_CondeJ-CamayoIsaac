@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-body);
+    background-color: rgb(3, 3, 54);
     color: var(--text-main);
     display: flex;
     justify-content: center;
@@ -18,7 +18,7 @@ body {
    2. FORM CONTAINER (LAYOUT)
    ========================================================================== */
 .formulario {
-    background: var(--bg-card);
+    background: #fff;
     width: 100%;
     max-width: 700px; /* Más ancho que el login para permitir 2 columnas */
     padding: 2.5rem;

@@ -2,6 +2,7 @@
 import * as funciones from "../core/storage.js";
 
 const btnSubmitInput = document.querySelector(".btnSubmit");
+const btnRegistro = document.querySelector(".btnRegistro")
 
 //funcion para limpiar todos los mensajes de error
 function limpiarErrores() {
@@ -23,10 +24,11 @@ btnSubmitInput.addEventListener("click", (event)=>{
     const numeroDocInput = document.querySelector(".numeroDoc");
     const passwordInput = document.querySelector(".password");
 
+
     //captura de datos
     const tipoDoc = document.querySelector(".tipoDoc").value;
-    const numeroDoc = document.get("numeroDoc").trim();
-    const password = document.get(".password").trim();
+    const numeroDoc = number(document.get("numeroDoc").value.trim());
+    const password = document.get("password").value.trim();
 
     //espacios de errores
     const errorTipoDoc=document.getElementById("errorTipoDoc");
@@ -41,7 +43,7 @@ btnSubmitInput.addEventListener("click", (event)=>{
 
     //tipo de documento ingresado
     if (tipoDoc == "") {
-        funciones.mostrarError(tipoDocInput,errorNombre,"no se puede dejar espacio en blanco");
+        funciones.mostrarError(tipoDocInput,errorTipoDoc,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
     }else{
         funciones.mostrarCorrecto(tipoDocInput,errorTipoDoc)
@@ -72,4 +74,11 @@ btnSubmitInput.addEventListener("click", (event)=>{
     } else {
         alert("Contraseña incorrecta");
     }
+});
+
+console.log(btnRegistro)
+//boton de registro para llevarlo a register.html
+btnRegistro.addEventListener("click", () => {
+    console.log("click detectado");
+    window.location.href = "register.html";
 });

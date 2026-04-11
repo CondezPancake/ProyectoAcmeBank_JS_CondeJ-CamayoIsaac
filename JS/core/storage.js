@@ -4,7 +4,7 @@ export function obtenerUsuario(documentoU) {
         return null
     }
 
-    const usuario = usuarios.find(u => u.numeroId === documentoU);
+    const usuario = usuarios.find(u => u.numeroDoc === documentoU);
     return usuario;
 }
 
