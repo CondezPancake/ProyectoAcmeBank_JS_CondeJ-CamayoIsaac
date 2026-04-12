@@ -1,8 +1,20 @@
 //importacion de funciones desde el storage.js
 import * as funciones from "../core/storage.js";
+import * as alertas from "../ui/alerts.js";
 
 const btnSubmitInput = document.querySelector(".btnSubmit");
-const btnRegistro = document.querySelector(".btnRegistro")
+const btnRegistro = document.querySelector(".btnRegistro");
+
+//espacios de errores
+const errorTipoDoc=document.getElementById("errorTipoDoc");
+const errorNumDoc=document.getElementById("errorNumDoc");
+const errorPassword=document.getElementById("errorPassword");
+    
+//inputs
+const tipoDocInput = document.querySelector(".tipoDoc");
+const numeroDocInput = document.querySelector(".numeroDoc");
+const passwordInput = document.querySelector(".password");
+
 
 //funcion para limpiar todos los mensajes de error
 function limpiarErrores() {
@@ -19,21 +31,15 @@ btnSubmitInput.addEventListener("click", (event)=>{
     event.preventDefault();
 
     limpiarErrores();
-    //inputs
-    const tipoDocInput = document.querySelector(".tipoDoc");
-    const numeroDocInput = document.querySelector(".numeroDoc");
-    const passwordInput = document.querySelector(".password");
+    
 
 
     //captura de datos
     const tipoDoc = document.querySelector(".tipoDoc").value;
-    const numeroDoc = number(document.get("numeroDoc").value.trim());
-    const password = document.get("password").value.trim();
+    const numeroDoc = Number(document.querySelector(".numeroDoc").value.trim());
+    const password = document.querySelector(".password").value.trim();
 
-    //espacios de errores
-    const errorTipoDoc=document.getElementById("errorTipoDoc");
-    const errorNumDoc=document.getElementById("errorNumDoc");
-    const errorPassword=document.getElementById("errorPassword");
+    
 
     //se obtiene el usuario de localstorage
     const usuario = funciones.obtenerUsuario(numeroDocInput);
@@ -43,26 +49,26 @@ btnSubmitInput.addEventListener("click", (event)=>{
 
     //tipo de documento ingresado
     if (tipoDoc == "") {
-        funciones.mostrarError(tipoDocInput,errorTipoDoc,"no se puede dejar espacio en blanco");
+        alertas.mostrarError(tipoDocInput,errorTipoDoc,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(tipoDocInput,errorTipoDoc)
+        alertas.mostrarCorrecto(tipoDocInput,errorTipoDoc)
     }
 
     //numero de documento ingresado
     if (numeroDoc == "") {
-        funciones.mostrarError(numeroDocInput,errorNumDoc,"no se puede dejar espacio en blanco");
+        alertas.mostrarError(numeroDocInput,errorNumDoc,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(numeroDocInput,errorNumDoc)
+        alertas.mostrarCorrecto(numeroDocInput,errorNumDoc)
     }
 
     //contraseña ingresada
     if (password == "") {
-        funciones.mostrarError(passwordInput,errorPassword,"no se puede dejar espacio en blanco");
+        alertas.mostrarError(passwordInput,errorPassword,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(passwordInput,errorPassword)
+        alertas.mostrarCorrecto(passwordInput,errorPassword)
     }
 
     //validacion de usuario y acceso
@@ -72,11 +78,10 @@ btnSubmitInput.addEventListener("click", (event)=>{
         window.location.href = "dashboard.html";
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
     } else {
-        alert("Contraseña incorrecta");
+        alert("Documento o Contraseña incorrecta");
     }
 });
 
-console.log(btnRegistro)
 //boton de registro para llevarlo a register.html
 btnRegistro.addEventListener("click", () => {
     console.log("click detectado");

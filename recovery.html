@@ -9,7 +9,7 @@
     <script src="/JS/auth/recovery.js" defer></script>
 </head>
 <body>
-    <form>
+    <form class="formDatos">
         <select class="tipoDoc" name="tipoDoc">
             <option value="" disabled selected>tipo de documento</option>
             <option value="cc">Cédula de ciudadanía</option>
@@ -17,20 +17,29 @@
             <option value="ce">Cédula de extranjería</option>
             <option value="pasaporte">Pasaporte</option>
         </select>
-        <input type="text" class="numeroDoc" placeholder="Número de identificación">
-        <input type="email" class="email" placeholder="Email">
+        <p class="error" id="errorTipoDoc"></p>
 
-        <button type="submit" class="">Recuperar Contraseña</button>
+        <input type="text" class="numeroDoc" placeholder="Número de identificación">
+        <p class="error" id="errorNumDoc"></p>
+
+        <input type="email" class="email" placeholder="Email">
+        <p class="error" id="errorEmail"></p>
+
+
+        <button type="submit" class="btnRecovery">Recuperar Contraseña</button>
         <button class="btnCancelar">cancelar</button>
     </form>
 
-    <div hidden>
+    <div class="formContraseña">
         <form>
-            <input type="text" placeholder="ingrese una nueva contraseña">
-            <input type="text" placeholder="ingrese la nueva contraseña nuevamente">
+            <input class="password" type="text" placeholder="ingrese una nueva contraseña">
+            <p class="error" id="errorPassword"></p>
+
+            <input class="password2" type="text" placeholder="ingrese nuevamente la contraseña ">
+            <p class="error" id="errorPassword2"></p>
         </form>
 
-        <button type="submit" class="btnRecovery" href="/index.html">Cambiar Contraseña</button>
+        <button type="submit" class="btnChange">Cambiar Contraseña</button>
     </div>
 </body>
 </html>

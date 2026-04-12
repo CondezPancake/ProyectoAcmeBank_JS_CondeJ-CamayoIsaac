@@ -1,21 +1,23 @@
 //importacion de funciones desde el storage.js
-import * as funciones from "../core/storage";
+import * as funciones from "../core/storage.js";
+import * as alertas from "../ui/alerts.js";
 
 //acceder al boton
 const btnRegistro = document.querySelector(".btnRegistrarse");
+const btnCancelar = document.querySelector(".btnCancelar");
 
 //espacios de errores
-const errorTipoDoc = document.querySelector(".errorTipoDoc");
-const errorNumDoc = document.querySelector(".errorNumeroDoc");
-const errorNombres = document.querySelector(".errorNombres");
-const errorApellidos = document.querySelector(".errorApellidos");
-const errorGenero = document.querySelector(".errorGenero");
-const errorTelefono = document.querySelector(".errorTelefono");
-const errorEmail = document.querySelector(".errorEmail");
-const errorDireccion = document.querySelector(".errorDireccion");
-const errorCiudad = document.querySelector(".errorCiudad");
-const errorPassword = document.querySelector(".errorPassword");
-const errorTerminos = document.querySelector(".errorTerminos");
+const errorTipoDoc = document.querySelector("#errorTipoDoc");
+const errorNumDoc = document.querySelector("#errorNumDoc");
+const errorNombres = document.querySelector("#errorNombres");
+const errorApellidos = document.querySelector("#errorApellidos");
+const errorGenero = document.querySelector("#errorGenero");
+const errorTelefono = document.querySelector("#errorTelefono");
+const errorEmail = document.querySelector("#errorEmail");
+const errorDireccion = document.querySelector("#errorDireccion");
+const errorCiudad = document.querySelector("#errorCiudad");
+const errorPassword = document.querySelector("#errorPassword");
+const errorTerminos = document.querySelector("#errorTerminos");
 
 //inputs
 const tipoDocInput = document.querySelector(".tipoDoc");
@@ -87,105 +89,105 @@ btnRegistro.addEventListener("click",(event)=>{
 
     //tipoDoc
     if (tipoDoc=="") {
-        funciones.mostrarError(tipoDocInput,errorTipoDoc,"este espacio es obligatorio");
+        alertas.mostrarError(tipoDocInput,errorTipoDoc,"este espacio es obligatorio");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(tipoDocInput,errorTipoDoc);
+        alertas.mostrarCorrecto(tipoDocInput,errorTipoDoc);
     }
 
     //numeroDoc
     if (numeroDoc=="") {
-        funciones.mostrarError(numeroDocInput,errorNumDoc,"el numero de documento es obligatorio");
+        alertas.mostrarError(numeroDocInput,errorNumDoc,"el numero de documento es obligatorio");
         formularioEsValido=false;
     }else if(isNaN(numeroDoc)){
-        funciones.mostrarError(numeroDocInput,errorNumDoc,"solo puede ingresar números");
+        alertas.mostrarError(numeroDocInput,errorNumDoc,"solo puede ingresar números");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(numeroDocInput,errorNumDoc);
+        alertas.mostrarCorrecto(numeroDocInput,errorNumDoc);
     }
     
     //nombres
     if (nombres=="") {
-        funciones.mostrarError(nombresInput,errorNombres,"este es un campo necesario");
+        alertas.mostrarError(nombresInput,errorNombres,"este es un campo necesario");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(nombresInput,errorNombres);
+        alertas.mostrarCorrecto(nombresInput,errorNombres);
     }
     
     //apellidos
     if (apellidos=="") {
-        funciones.mostrarError(apellidosInput,errorApellidos,"este es un campo necesario");
+        alertas.mostrarError(apellidosInput,errorApellidos,"este es un campo necesario");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(apellidosInput,errorApellidos);
+        alertas.mostrarCorrecto(apellidosInput,errorApellidos);
     }
     
     //genero
     if (genero=="") {
-        funciones.mostrarError(generoInput,errorGenero,"ingrese una opcion");
+        alertas.mostrarError(generoInput,errorGenero,"ingrese una opcion");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(generoInput,errorGenero);
+        alertas.mostrarCorrecto(generoInput,errorGenero);
     }
     
     //telefono
     if (telefono=="") {
-        funciones.mostrarError(telefonoInput,errorTelefono,"telefono es un espacio obligatorio");
+        alertas.mostrarError(telefonoInput,errorTelefono,"telefono es un espacio obligatorio");
         formularioEsValido=false;
     }else if(isNaN(telefono)){
-        funciones.mostrarError(telefonoInput,errorTelefono,"solo se pueden ingresar números");
+        alertas.mostrarError(telefonoInput,errorTelefono,"solo se pueden ingresar números");
         formularioEsValido=false;
     }else if (!telefono.length == 10) {
-        funciones.mostrarError(telefonoInput,errorTelefono,"invalido, 10 caracteres requeridos");
+        alertas.mostrarError(telefonoInput,errorTelefono,"invalido, 10 caracteres requeridos");
         formularioEsValido=false;
     }
     else{
-        funciones.mostrarCorrecto(telefonoInput,errorTelefono);
+        alertas.mostrarCorrecto(telefonoInput,errorTelefono);
     }
     
     //email
     if (email=="") {
-        funciones.mostrarError(emailInput,errorEmail,"el email es obligatorio");
+        alertas.mostrarError(emailInput,errorEmail,"el email es obligatorio");
         formularioEsValido=false;
     }else if(correoValido(email)){
-        funciones.mostrarCorrecto(emailInput,errorEmail);
+        alertas.mostrarCorrecto(emailInput,errorEmail);
     }else{
-        funciones.mostrarError(emailInput,errorEmail,"email invalido")
+        alertas.mostrarError(emailInput,errorEmail,"email invalido")
     }
     
     //direccion
     if (direccion=="") {
-        funciones.mostrarError(direccionInput,errorDireccion,"es necesaria esta informacion");
+        alertas.mostrarError(direccionInput,errorDireccion,"es necesaria esta informacion");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(direccionInput,errorDireccion);
+        alertas.mostrarCorrecto(direccionInput,errorDireccion);
     }
     
     //ciudad
     if (ciudad=="") {
-        funciones.mostrarError(ciudadInput,errorCiudad,"es necesaria esta informacion");
+        alertas.mostrarError(ciudadInput,errorCiudad,"es necesaria esta informacion");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(ciudadInput,errorCiudad);
+        alertas.mostrarCorrecto(ciudadInput,errorCiudad);
     }
     
     //contraseña
     if (password=="") {
-        funciones.mostrarError(passwordInput,errorPassword,"no se puede dejar espacio en blanco");
+        alertas.mostrarError(passwordInput,errorPassword,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
     }else if (password.length<8 || password.length>12) {
-        funciones.mostrarError(passwordInput,errorPassword,"minimo 8 caracteres y maximo 12 caracteres");
+        alertas.mostrarError(passwordInput,errorPassword,"minimo 8 caracteres y maximo 12 caracteres");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(passwordInput,errorPassword);
+        alertas.mostrarCorrecto(passwordInput,errorPassword);
     }
     
     //terminos
     if (!terminos) {
-        funciones.mostrarError(terminosInput,errorTerminos,"obligao tiene que estar de acuerdo");
+        alertas.mostrarError(terminosInput,errorTerminos,"obligao tiene que estar de acuerdo");
         formularioEsValido=false;
     }else{
-        funciones.mostrarCorrecto(terminosInput,errorTerminos);
+        alertas.mostrarCorrecto(terminosInput,errorTerminos);
     }
 
     if (formularioEsValido) {
@@ -216,10 +218,13 @@ btnRegistro.addEventListener("click",(event)=>{
         };
 
         //mostrar resumen, se puede hacer luego con innerHTML, provisional para los requerimientos
-        alert (`usuario:${usuario}`);
-
+        alertas.mostrarUsuario(usuario)
         
         funciones.guardarUsuario(usuario);
         window.location.href="index.html";
     }
+})
+
+btnCancelar.addEventListener("click",()=>{
+    window.location.href = "index.html"
 })

@@ -6,7 +6,7 @@
     <title>Registro De Usuario AcmeBank</title>
     <link rel="stylesheet" href="/CSS/styles.css">
     <link rel="stylesheet" href="/CSS/register.css">
-    <script src="/JS/auth/register.js"></script>
+    <script type="module" src="/JS/auth/register.js" defer></script>
 </head>
 <body>
     <form class="formulario">
@@ -52,10 +52,13 @@
         <input type="password" class="password" placeholder="Contraseña"> 
         <p class="error" id="errorPassword"></p>
 
-        <a href="#">terminos y condiciones</a><input type="checkbox" class="terminos" placeholder="esta de acuerdo con nuestros">
+        <div class="container-terminos">
+            <input type="checkbox" class="terminos">
+            <label>Acepto los <a href="#">términos y condiciones</a></label>
+        </div>
         <p class="error" id="errorTerminos"></p>
 
-
+        <button type="button" class="btnCancelar">cancelar</button>
         <button type="submit" class="btnRegistrarse">registrarse</button>
     </form>
 </body>
