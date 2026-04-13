@@ -16,7 +16,7 @@ const profileName = document.getElementById("profileName");
 const profileEmail = document.getElementById("profileEmail");
 const profilePhone = document.getElementById("profilePhone");
 
-const userData = JSON.parse(localStorage.getItem("acmeUser"));
+const userData = getSession();
 
 if (userData) {
     profileName.value = userData.name || "";
@@ -73,9 +73,7 @@ goInicio.addEventListener("click", function () {
     window.location.href = "dashboard.html";
 });
 
-logoutBtn.addEventListener("click", function () {
-    window.location.href = "index.html";
-});
+logoutBtn.addEventListener("click", logout);
 
 document.addEventListener("click", function (e) {
     if (!notificationsPanel.contains(e.target) && !notificationToggle.contains(e.target)) {

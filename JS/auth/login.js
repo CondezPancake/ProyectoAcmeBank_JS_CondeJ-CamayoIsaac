@@ -1,6 +1,13 @@
 //importacion de funciones desde el storage.js
 import * as funciones from "../core/storage.js";
 import * as alertas from "../ui/alerts.js";
+import { setSession } from "../core/session.js";  
+import { protectRoute, getSession, logout } from "../core/session.js";
+
+protectRoute();
+
+setSession(usuarioEncontrado);
+window.location.href = "../../dashboard.html"
 
 const btnSubmitInput = document.querySelector(".btnSubmit");
 const btnRegistro = document.querySelector(".btnRegistro");

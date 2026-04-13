@@ -1,9 +1,20 @@
-const currentUser = {
-    name: "Usuario Acme",
-    email: "usuario@acmebank.com",
-    phone: "3000000000"
-};
+export function setSession(user) {
+    localStorage.setItem("sessionUser", JSON.stringify(user));
+}
 
-if (!localStorage.getItem("acmeUser")) {
-    localStorage.setItem("acmeUser", JSON.stringify(currentUser));
+export function getSession() {
+    return JSON.parse(localStorage.getItem("sessionUser"));
+}
+
+export function logout() {
+    localStorage.removeItem("sessionUser");
+    window.location.href = "../../index.html";
+}
+
+export function protectRoute() {
+    const user = getSession();
+
+    if (!user) {
+        window.location.href = "../../index.html";
+    }
 }
