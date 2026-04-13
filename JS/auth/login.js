@@ -42,7 +42,7 @@ btnSubmitInput.addEventListener("click", (event)=>{
     
 
     //se obtiene el usuario de localstorage
-    const usuario = funciones.obtenerUsuario(numeroDocInput);
+    const usuario = funciones.obtenerUsuario(numeroDoc);
 
     //validaciones
     let formularioEsValido = true;
@@ -72,11 +72,11 @@ btnSubmitInput.addEventListener("click", (event)=>{
     }
 
     //validacion de usuario y acceso
-    if (!usuario) {
-    alert("Usuario no existe");
-    } else if (usuario.password === passwordInput && usuario.numeroId === numeroDocInput) {
-        window.location.href = "dashboard.html";
+    if (usuario == null) {
+        alert("Usuario no existe");
+    } else if (usuario.password === password && usuario.numeroDoc === numeroDoc) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+        window.location.href = "dashboard.html";
     } else {
         alert("Documento o Contraseña incorrecta");
     }
