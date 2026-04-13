@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="CSS/dashboard.css">
     <script src="JS/core/utils.js" defer></script>
     <script type="module" src="JS/core/session.js" defer></script>
-    <script src="JS/dashboard/dashboard.js" defer></script>
+    <script type="module" src="JS/dashboard/dashboard.js" defer></script>
     <title>AcmeBank</title>
 </head>
 <body>
@@ -72,7 +72,7 @@
 
         <main class="main-content">
             <section class="welcome-section">
-                <h2>Bienvenido de nuevo </h2>
+                <h2>Bienvenido de nuevo <span id="saludoUsuario"></span></h2>
                 <p>Aqui tienes el estado actual de tu cuenta</p>
             </section>
 
@@ -93,9 +93,10 @@
 
             <section class="project-details card">
                 <h2>CUENTA DE AHORROS</h2>
-                <p>187-7698-989</p>
+                <p id="numeroCuentaUsuario">187-7698-989</p>
                 <div class="Saldo"></div>
-                <p><strong>Saldo actual:</strong> $586,390</p>
+                <p><strong>Saldo actual:</strong> <span id="saldoActualUsuario">$586,390</span></p>
+                <p><strong>Fecha de creación:</strong> <span id="fechaCreacionUsuario"></span></p>
             </section>
 
             <section class="Promotions">

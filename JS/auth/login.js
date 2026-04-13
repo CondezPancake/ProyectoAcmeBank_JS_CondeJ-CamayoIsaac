@@ -37,19 +37,12 @@ btnSubmitInput.addEventListener("click", (event)=>{
     event.preventDefault();
 
     limpiarErrores();
-    
-
 
     //captura de datos
     const tipoDoc = document.querySelector(".tipoDoc").value;
     const numeroDocTexto = document.querySelector(".numeroDoc").value.trim();
     const numeroDoc = Number(numeroDocTexto);
     const password = document.querySelector(".password").value.trim();
-
-    
-
-    //se obtiene el usuario de localstorage
-    const usuario = funciones.obtenerUsuario(numeroDoc);
 
     //validaciones
     let formularioEsValido = true;
@@ -84,6 +77,9 @@ btnSubmitInput.addEventListener("click", (event)=>{
     if (!formularioEsValido) {
         return;
     }
+
+    //se obtiene el usuario de localstorage
+    const usuario = funciones.obtenerUsuario(numeroDoc);
 
     //validacion de usuario y acceso
     if (usuario == null) {

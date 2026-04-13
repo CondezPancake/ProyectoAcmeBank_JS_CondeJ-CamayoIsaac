@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/accounts.css">
     <script type="module" src="JS/core/session.js" defer></script>
-    <script src="JS/dashboard/accounts.js" defer></script>
+    <script type="module" src="JS/dashboard/accounts.js" defer></script>
     <title>AcmeBank - Accounts</title>
 </head>
 <body>
@@ -78,8 +78,8 @@
             <section class="stats-grid">
                 <div class="card main-account-card">
                     <h2>Cuenta de Ahorros</h2>
-                    <p>Account number: 187-7698-989</p>
-                    <p><strong>Available balance:</strong> $586,390</p>
+                    <p>Account number: <span id="numeroCuentaUsuario">187-7698-989</span></p>
+                    <p><strong>Available balance:</strong> <span id="saldoActualUsuario">$586,390</span></p>
                 </div>
 
                 <div class="card">

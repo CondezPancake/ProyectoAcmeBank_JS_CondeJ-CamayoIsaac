@@ -1,3 +1,5 @@
+import { getSession, setSession, logout, protectRoute } from "../core/session.js";
+
 //--------------NAV----------------------//
 const notificationToggle = document.getElementById("notificationToggle");
 const profileToggle = document.getElementById("profileToggle");
@@ -17,10 +19,13 @@ const logoutButton = document.getElementById("logoutBtn");
 const goHome = document.getElementById("goHome");
 const goCuentas = document.getElementById("goCuentas")
 
+const numeroCuentaUsuario = document.getElementById("numeroCuentaUsuario");
+const saldoActualUsuario = document.getElementById("saldoActualUsuario");
+
 protectRoute();
 
 //---------------LOCAL STORAGE-------------------//
-const userData = getSession() || JSON.parse(localStorage.getItem("acmeUser")) || JSON.parse(localStorage.getItem("usuarioActivo"));
+let userData = getSession() || JSON.parse(localStorage.getItem("acmeUser")) || JSON.parse(localStorage.getItem("usuarioActivo"));
 
 
 //---------EVENTS NOTIFICATION-PROFILE-----------//
@@ -28,6 +33,14 @@ if (userData) {
     profileName.value = userData.nombres || userData.name || "";
     profileEmail.value = userData.email || "";
     profilePhone.value = userData.telefono || userData.phone || "";
+
+    if (numeroCuentaUsuario && userData.cuenta) {
+        numeroCuentaUsuario.textContent = userData.cuenta.numCuenta || "";
+    }
+
+    if (saldoActualUsuario && userData.cuenta) {
+        saldoActualUsuario.textContent = "$" + Number(userData.cuenta.dinero || 0).toLocaleString("es-CO");
+    }
 }
 
 notificationToggle.addEventListener("click", function () {
@@ -60,9 +73,27 @@ profileForm.addEventListener("submit", function (e) {
         telefono: profilePhone.value
     };
 
-    localStorage.setItem("acmeUser", JSON.stringify(updatedUser));
-    localStorage.setItem("usuarioActivo", JSON.stringify(updatedUser));
-    setSession(updatedUser);
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let indiceU = usuarios.findIndex(u => u.numeroDoc === updatedUser.numeroDoc);
+
+    if (indiceU !== -1) {
+        usuarios[indiceU] = {
+            ...usuarios[indiceU],
+            name: updatedUser.name,
+            nombres: updatedUser.nombres,
+            email: updatedUser.email,
+            phone: updatedUser.phone,
+            telefono: updatedUser.telefono
+        };
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        userData = usuarios[indiceU];
+    } else {
+        userData = updatedUser;
+    }
+
+    localStorage.setItem("acmeUser", JSON.stringify(userData));
+    localStorage.setItem("usuarioActivo", JSON.stringify(userData));
+    setSession(userData);
     alert("Perfil actualizado");
     profilePanel.classList.remove("active");
 });

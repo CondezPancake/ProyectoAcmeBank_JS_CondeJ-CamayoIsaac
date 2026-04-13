@@ -72,7 +72,8 @@ btnRegistro.addEventListener("click",(event)=>{
 
     //toma de datos
     const tipoDoc = document.querySelector(".tipoDoc").value;
-    const numeroDoc = Number(document.querySelector(".numeroDoc").value.trim());
+    const numeroDocTexto = document.querySelector(".numeroDoc").value.trim();
+    const numeroDoc = Number(numeroDocTexto);
     const nombres = document.querySelector(".nombres").value.trim();
     const apellidos = document.querySelector(".apellidos").value.trim();
     const genero = document.querySelector(".genero").value;
@@ -97,7 +98,7 @@ btnRegistro.addEventListener("click",(event)=>{
     }
 
     //numeroDoc
-    if (numeroDoc=="") {
+    if (numeroDocTexto=="") {
         alertas.mostrarError(numeroDocInput,errorNumDoc,"el numero de documento es obligatorio");
         formularioEsValido=false;
     }else if(isNaN(numeroDoc)){
@@ -154,6 +155,7 @@ btnRegistro.addEventListener("click",(event)=>{
         alertas.mostrarCorrecto(emailInput,errorEmail);
     }else{
         alertas.mostrarError(emailInput,errorEmail,"email invalido")
+        formularioEsValido=false;
     }
     
     //direccion
@@ -208,12 +210,13 @@ btnRegistro.addEventListener("click",(event)=>{
             "genero" : genero,
             "telefono" : telefono,
             "email" : email,
+            "direccion" : direccion,
             "ciudad" : ciudad,
             "password" : password,
             "terminos" : terminos,
             "cuenta":{
                 "numCuenta": "AC"+Math.floor(Math.random() * 100000)+Date.now(),
-                "fecha": new Date(),
+                "fecha": new Date().toISOString(),
                 "dinero": 0.0
             }
         };
