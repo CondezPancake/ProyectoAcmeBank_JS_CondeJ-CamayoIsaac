@@ -6,6 +6,9 @@ const profilePanel = document.getElementById("profilePanel");
 const closeNotifications = document.getElementById("closeNotifications");
 const closeProfile = document.getElementById("closeProfile");
 const profileForm = document.getElementById("profileForm");
+const profileName = document.getElementById("profileName");
+const profileEmail = document.getElementById("profileEmail");
+const profilePhone = document.getElementById("profilePhone");
 
 //-----------------SIDE BAR-----------------//
 const backDashboard = document.getElementById("backDashboard");
@@ -14,16 +17,17 @@ const logoutButton = document.getElementById("logoutBtn");
 const goHome = document.getElementById("goHome");
 const goCuentas = document.getElementById("goCuentas")
 
+protectRoute();
 
 //---------------LOCAL STORAGE-------------------//
-const userData = JSON.parse(localStorage.getItem("acmeUser"));
+const userData = getSession() || JSON.parse(localStorage.getItem("acmeUser")) || JSON.parse(localStorage.getItem("usuarioActivo"));
 
 
 //---------EVENTS NOTIFICATION-PROFILE-----------//
 if (userData) {
-    profileName.value = userData.name || "";
+    profileName.value = userData.nombres || userData.name || "";
     profileEmail.value = userData.email || "";
-    profilePhone.value = userData.phone || "";
+    profilePhone.value = userData.telefono || userData.phone || "";
 }
 
 notificationToggle.addEventListener("click", function () {
@@ -48,12 +52,17 @@ profileForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const updatedUser = {
+        ...userData,
         name: profileName.value,
+        nombres: profileName.value,
         email: profileEmail.value,
-        phone: profilePhone.value
+        phone: profilePhone.value,
+        telefono: profilePhone.value
     };
 
     localStorage.setItem("acmeUser", JSON.stringify(updatedUser));
+    localStorage.setItem("usuarioActivo", JSON.stringify(updatedUser));
+    setSession(updatedUser);
     alert("Perfil actualizado");
     profilePanel.classList.remove("active");
 });
@@ -76,9 +85,7 @@ goSettingsPage.addEventListener("click", function () {
     window.location.href = "settings.html";
 });
 
-logoutButton.addEventListener("click", function () {
-    window.location.href = "index.html";
-});
+logoutButton.addEventListener("click", logout);
 
 
 //------------EVENT PROFILE-NOTIFICATION PANEL--------------//

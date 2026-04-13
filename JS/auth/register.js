@@ -76,7 +76,8 @@ btnRegistro.addEventListener("click",(event)=>{
     const nombres = document.querySelector(".nombres").value.trim();
     const apellidos = document.querySelector(".apellidos").value.trim();
     const genero = document.querySelector(".genero").value;
-    const telefono = Number(document.querySelector(".numeroTel").value.trim());
+    const telefonoTexto = document.querySelector(".numeroTel").value.trim();
+    const telefono = Number(telefonoTexto);
     const email = document.querySelector(".email").value.trim();
     const direccion = document.querySelector(".direccion").value.trim();
     const ciudad = document.querySelector(".ciudad").value.trim();
@@ -131,13 +132,13 @@ btnRegistro.addEventListener("click",(event)=>{
     }
     
     //telefono
-    if (telefono=="") {
+    if (telefonoTexto=="") {
         alertas.mostrarError(telefonoInput,errorTelefono,"telefono es un espacio obligatorio");
         formularioEsValido=false;
     }else if(isNaN(telefono)){
         alertas.mostrarError(telefonoInput,errorTelefono,"solo se pueden ingresar números");
         formularioEsValido=false;
-    }else if (!telefono.length == 10) {
+    }else if (telefonoTexto.length != 10) {
         alertas.mostrarError(telefonoInput,errorTelefono,"invalido, 10 caracteres requeridos");
         formularioEsValido=false;
     }

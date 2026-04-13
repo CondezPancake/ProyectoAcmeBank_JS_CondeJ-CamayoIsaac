@@ -1,13 +1,12 @@
 //importacion de funciones desde el storage.js
 import * as funciones from "../core/storage.js";
 import * as alertas from "../ui/alerts.js";
-import { setSession } from "../core/session.js";  
-import { protectRoute, getSession, logout } from "../core/session.js";
+import { setSession, getSession } from "../core/session.js";
 
-protectRoute();
-
-setSession(usuarioEncontrado);
-window.location.href = "../../dashboard.html"
+const usuarioEnSesion = getSession();
+if (usuarioEnSesion) {
+    window.location.href = "../../dashboard.html";
+}
 
 const btnSubmitInput = document.querySelector(".btnSubmit");
 const btnRegistro = document.querySelector(".btnRegistro");
@@ -43,7 +42,8 @@ btnSubmitInput.addEventListener("click", (event)=>{
 
     //captura de datos
     const tipoDoc = document.querySelector(".tipoDoc").value;
-    const numeroDoc = Number(document.querySelector(".numeroDoc").value.trim());
+    const numeroDocTexto = document.querySelector(".numeroDoc").value.trim();
+    const numeroDoc = Number(numeroDocTexto);
     const password = document.querySelector(".password").value.trim();
 
     
@@ -63,8 +63,11 @@ btnSubmitInput.addEventListener("click", (event)=>{
     }
 
     //numero de documento ingresado
-    if (numeroDoc == "") {
+    if (numeroDocTexto == "") {
         alertas.mostrarError(numeroDocInput,errorNumDoc,"no se puede dejar espacio en blanco");
+        formularioEsValido=false;
+    }else if (isNaN(numeroDoc)) {
+        alertas.mostrarError(numeroDocInput,errorNumDoc,"solo numeros en este espacio");
         formularioEsValido=false;
     }else{
         alertas.mostrarCorrecto(numeroDocInput,errorNumDoc)
@@ -78,12 +81,18 @@ btnSubmitInput.addEventListener("click", (event)=>{
         alertas.mostrarCorrecto(passwordInput,errorPassword)
     }
 
+    if (!formularioEsValido) {
+        return;
+    }
+
     //validacion de usuario y acceso
     if (usuario == null) {
         alert("Usuario no existe");
-    } else if (usuario.password === password && usuario.numeroDoc === numeroDoc) {
+    } else if (usuario.password === password && usuario.numeroDoc === numeroDoc && usuario.tipoDoc === tipoDoc) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
-        window.location.href = "dashboard.html";
+        localStorage.setItem("acmeUser", JSON.stringify(usuario));
+        setSession(usuario);
+        window.location.href = "../../dashboard.html";
     } else {
         alert("Documento o Contraseña incorrecta");
     }
@@ -92,5 +101,5 @@ btnSubmitInput.addEventListener("click", (event)=>{
 //boton de registro para llevarlo a register.html
 btnRegistro.addEventListener("click", () => {
     console.log("click detectado");
-    window.location.href = "register.html";
+    window.location.href = "../../register.html";
 });

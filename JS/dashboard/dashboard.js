@@ -16,12 +16,14 @@ const profileName = document.getElementById("profileName");
 const profileEmail = document.getElementById("profileEmail");
 const profilePhone = document.getElementById("profilePhone");
 
-const userData = getSession();
+protectRoute();
+
+const userData = getSession() || JSON.parse(localStorage.getItem("acmeUser")) || JSON.parse(localStorage.getItem("usuarioActivo"));
 
 if (userData) {
-    profileName.value = userData.name || "";
+    profileName.value = userData.nombres || userData.name || "";
     profileEmail.value = userData.email || "";
-    profilePhone.value = userData.phone || "";
+    profilePhone.value = userData.telefono || userData.phone || "";
 }
 
 notificationToggle.addEventListener("click", function () {
@@ -46,12 +48,17 @@ profileForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const updatedUser = {
+        ...userData,
         name: profileName.value,
+        nombres: profileName.value,
         email: profileEmail.value,
-        phone: profilePhone.value
+        phone: profilePhone.value,
+        telefono: profilePhone.value
     };
 
     localStorage.setItem("acmeUser", JSON.stringify(updatedUser));
+    localStorage.setItem("usuarioActivo", JSON.stringify(updatedUser));
+    setSession(updatedUser);
     alert("Perfil actualizado");
     profilePanel.classList.remove("active");
 });

@@ -19,14 +19,15 @@ const passwordInput1 = document.querySelector(".password");
 const passwordInput2 = document.querySelector(".password2");
 
 //parrafos de errores
-const errorTipoDoc = document.querySelector(".errorTipoDoc");
-const errorNumDoc = document.querySelector(".errorNumDoc");
-const errorEmail = document.querySelector(".errorEmail");
-const errorPassword1 = document.querySelector(".errorPassword");
-const errorPassword2 = document.querySelector(".errorPassword2");
+const errorTipoDoc = document.getElementById("errorTipoDoc");
+const errorNumDoc = document.getElementById("errorNumDoc");
+const errorEmail = document.getElementById("errorEmail");
+const errorPassword1 = document.getElementById("errorPassword");
+const errorPassword2 = document.getElementById("errorPassword2");
 
 
 let usuario = null;
+let numeroDoc = null;
 
 
 
@@ -59,7 +60,8 @@ btnRecovery.addEventListener("click",(event)=>{
 
     //toma de datos
     const tipoDoc = document.querySelector(".tipoDoc").value.trim();
-    const numeroDoc = Number(document.querySelector(".numeroDoc").value.trim());
+    const numeroDocTexto = document.querySelector(".numeroDoc").value.trim();
+    numeroDoc = Number(numeroDocTexto);
     const email = document.querySelector(".email").value.trim();
 
     //validaciones
@@ -74,7 +76,7 @@ btnRecovery.addEventListener("click",(event)=>{
     }
 
     //numero de documento ingresado
-    if (numeroDoc = "") {
+    if (numeroDocTexto == "") {
         alertas.mostrarError(numeroDocInput,errorNumDoc,"este espacio es obligatorio");
         formularioEsValido=false;
     } else if (isNaN(numeroDoc)) {
@@ -93,17 +95,18 @@ btnRecovery.addEventListener("click",(event)=>{
         alertas.mostrarCorrecto(emailInput,errorEmail);
     }else{
         alertas.mostrarError(emailInput,errorEmail,"email invalido")
+        formularioEsValido=false;
     }
 
     if (formularioEsValido) {
         usuario = funciones.obtenerUsuario(numeroDoc)
 
         if (usuario) {
-            if (usuario.email === email) {
+            if (usuario.email === email && usuario.tipoDoc === tipoDoc) {
                 formDatos.hidden=true;
                 formContraseña.hidden=false;
             }else{
-                alertas.mostrarError(emailInput,errorEmail,"email incorrecto")
+                alertas.mostrarError(emailInput,errorEmail,"datos incorrectos")
             }
         }else{
             alert("usuario no encontrado")
@@ -124,21 +127,23 @@ btnChange.addEventListener("click",(event)=>{
     if (password1 == "") {
         alertas.mostrarError(passwordInput1,errorPassword1,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
-    }else if (password2 == "") {
+    }
+    if (password2 == "") {
         alertas.mostrarError(passwordInput2,errorPassword2,"no se puede dejar espacio en blanco");
         formularioEsValido=false;
-    }else if (password1.length<8 || password1.length>12) {
+    }
+    if (password1 !== "" && (password1.length<8 || password1.length>12)) {
         alertas.mostrarError(passwordInput1,errorPassword1,"minimo 8 caracteres y maximo 12 caracteres");
+        formularioEsValido=false;
+    }
+    if (password2 !== "" && (password2.length<8 || password2.length>12)) {
         alertas.mostrarError(passwordInput2,errorPassword2,"minimo 8 caracteres y maximo 12 caracteres");
         formularioEsValido=false;
-    }else if (password1 !== password2) {
+    }
+    if (password1 !== "" && password2 !== "" && password1 !== password2) {
         alertas.mostrarError(passwordInput1,errorPassword1,"los dos espacios deben tener la misma contraseña");
         alertas.mostrarError(passwordInput2,errorPassword2,"los dos espacios deben tener la misma contraseña");
         formularioEsValido=false;
-        return;
-    }else{
-        alertas.mostrarCorrecto(passwordInput1,errorPassword1);
-        alertas.mostrarCorrecto(passwordInput2,errorPassword2);
     }
 
     if (formularioEsValido) {
@@ -147,18 +152,19 @@ btnChange.addEventListener("click",(event)=>{
             console.error("variable usuarios = null");
         }else{
             let indiceU = usuarios.findIndex(u => u.numeroDoc === numeroDoc);
-            if (indiceU     === -1) {
+            if (indiceU === -1) {
                 alert("usuario no encontrado");
             }else{
                 usuarios[indiceU].password = password1;
                 localStorage.setItem("usuarios",JSON.stringify(usuarios));
-                window.location.href="index.html"
+                window.location.href="../../index.html"
             }
         }
         
     }
 })
 
-btnCancelar.addEventListener("click",()=>{
-    window.location.href="index.html"
+btnCancelar.addEventListener("click",(event)=>{
+    event.preventDefault();
+    window.location.href="../../index.html"
 })

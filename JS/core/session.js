@@ -1,20 +1,29 @@
-export function setSession(user) {
+function setSession(user) {
     localStorage.setItem("sessionUser", JSON.stringify(user));
 }
 
-export function getSession() {
+function getSession() {
     return JSON.parse(localStorage.getItem("sessionUser"));
 }
 
-export function logout() {
+function logout() {
     localStorage.removeItem("sessionUser");
-    window.location.href = "../../index.html";
+    localStorage.removeItem("usuarioActivo");
+    localStorage.removeItem("acmeUser");
+    window.location.href = "index.html";
 }
 
-export function protectRoute() {
+function protectRoute() {
     const user = getSession();
 
     if (!user) {
-        window.location.href = "../../index.html";
+        window.location.href = "index.html";
     }
 }
+
+window.setSession = setSession;
+window.getSession = getSession;
+window.logout = logout;
+window.protectRoute = protectRoute;
+
+export { setSession, getSession, logout, protectRoute };
