@@ -6,6 +6,7 @@ const closeNotifications = document.getElementById("closeNotifications");
 const closeProfile = document.getElementById("closeProfile");
 const profileForm = document.getElementById("profileForm");
 
+const goHome = document.getElementById("goHome")
 const goCuentas = document.getElementById("goCuentas");
 const goSettings = document.getElementById("goSettings");
 const goInicio = document.getElementById("goInicio");
@@ -54,6 +55,11 @@ profileForm.addEventListener("submit", function (e) {
     alert("Perfil actualizado");
     profilePanel.classList.remove("active");
 });
+
+
+goHome.addEventListener("click", function (){
+    window.location.href = "dashboard.html";
+})
 
 goCuentas.addEventListener("click", function () {
     window.location.href = "accounts.html";

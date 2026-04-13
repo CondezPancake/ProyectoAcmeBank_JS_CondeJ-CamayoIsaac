@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/accounts.css">
+    <script src="JS/core/session.js" defer></script>
+    <script src="JS/dashboard/accounts.js" defer></script>
     <title>AcmeBank - Accounts</title>
 </head>
 <body>
@@ -13,26 +15,56 @@
                 <h1>AcmeBank</h1>
             </div>
             <nav class="user-nav">
-                <span>🔔 Notificaciones</span>
-                <span>👤 Mi perfil</span>
+                <span id="notificationToggle">🔔 Notificaciones</span>
+                <span id="profileToggle">👤 Mi perfil</span>
             </nav>
+
+            <div class="notifications-panel" id="notificationsPanel">
+                <h3>Notificaciones</h3>
+                <div class="notification-item">
+                    <strong>Bienvenido a AcmeBank</strong>
+                    <p>Tu cuenta está activa y lista para usarse.</p>
+                </div>
+                <div class="notification-item">
+                    <strong>Estado del sistema</strong>
+                    <p>No tienes movimientos nuevos por ahora.</p>
+                </div>
+                <button id="closeNotifications">Cerrar</button>
+            </div>
+
+            <div class="profile-panel" id="profilePanel">
+                <h3>Mi perfil</h3>
+                <form id="profileForm">
+                    <label for="profileName">Nombre</label>
+                    <input type="text" id="profileName" placeholder="Tu nombre">
+
+                    <label for="profileEmail">Correo</label>
+                    <input type="email" id="profileEmail" placeholder="correo@ejemplo.com">
+
+                    <label for="profilePhone">Teléfono</label>
+                    <input type="text" id="profilePhone" placeholder="3001234567">
+
+                    <button type="submit">Guardar cambios</button>
+                </form>
+                <button id="closeProfile">Cerrar</button>
+            </div>
         </header>
 
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <img src="./Data/Images/logoAcme.png" alt="AcmeLogo">
+                <img src="./Data/Images/logoAcme.webp" alt="AcmeLogo" id="goHome">
             </div>
             <nav>
                 <ul>
-                    <li id="backDashboard">🏠 Inicio</li>
-                    <li>💳 Cuentas</li>
-                    <li>🔄 Transacciones</li>
-                    <li>➕ Consignar</li>
-                    <li>➖ Retirar</li>
-                    <li>🧾 Servicios</li>
-                    <li>📄 Quienes Somos</li>
-                    <li id="goSettings">⚙️ Ajustes</li>
-                    <li id="logoutBtn">🚪Cerrar Sesión</li>
+                    <li id="backDashboard"> <strong>🏠 Inicio</strong></li>
+                    <li id="goCuentas"> <strong>💳 Cuentas </strong></li>
+                    <li><strong>🔄 Transacciones</strong></li>
+                    <li><strong>➕ Consignar</strong></li>
+                    <li> <strong>➖ Retirar</strong></li>
+                    <li><strong>🧾 Servicios</strong> </li>
+                    <li><strong>📄 Quienes Somos</strong></li>
+                    <li id="goSettings"><strong>⚙️ Ajustes</strong></li>
+                    <li id="logoutBtn"><strong>🚪Cerrar Sesión</strong></li>
                 </ul>
             </nav>
         </aside>
@@ -67,7 +99,5 @@
         </footer>
     </div>
 
-    <script src="JS/core/session.js"></script>
-    <script src="JS/dashboard/accounts.js"></script>
 </body>
 </html>

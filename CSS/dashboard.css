@@ -1,6 +1,6 @@
 :root {
-    --primary: #000000;
-    --primary-dark: #4338ca;
+    --primary: #1E3A8A;      
+    --primary-dark: #1E40AF;   
     --secondary: #64748b;
     --bg-body: #f8fafc;
     --bg-card: #ffffff;
@@ -10,6 +10,10 @@
     --transition: all 0.3s ease;
     --radius: 12px;
     --bg-sidebar: #192747;
+    --success: #10B981;
+    --error: #EF4444;
+    --warning: #F59E0B;
+    --border: #E5E7EB;
 }
 
 * {
