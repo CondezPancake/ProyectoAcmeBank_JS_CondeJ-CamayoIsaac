@@ -362,3 +362,60 @@ body{
 .alerta-personalizada.error {
     background: #EF4444;
 }
+
+/* ==========================================================================
+   ESTILO: BOTÓN DESCARGAR CERTIFICADO
+   ========================================================================== */
+
+#btnCertificado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--primary); /* Azul AcmeBank */
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin: 1.5rem 0; /* Espaciado respecto a las cards y promociones */
+    text-transform: none;
+}
+
+/* Estado Hover: Oscurece un poco y se eleva */
+#btnCertificado:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.2);
+}
+
+/* Estado Active: Efecto de pulsación */
+#btnCertificado:active {
+    transform: translateY(0);
+}
+
+/* Icono dinámico (opcional mediante pseudo-elemento) */
+#btnCertificado::before {
+    content: '📥';
+    font-size: 1.2rem;
+}
+
+/* Alineación dentro del main-content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el botón a la izquierda con el contenido */
+}
+
+/* Ajuste Responsive */
+@media (max-width: 600px) {
+    #btnCertificado {
+        width: 100%; /* En móviles ocupa todo el ancho para facilitar el clic */
+        margin: 1rem 0;
+    }
+}
