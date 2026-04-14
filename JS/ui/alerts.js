@@ -1,4 +1,4 @@
- //Funciones auxiliares para las validaciones
+//Funciones auxiliares para las validaciones
 export function mostrarError(input,elementoError,mensaje){
     elementoError.textContent=mensaje;
     input.classList.add("incorrecto");
@@ -14,4 +14,38 @@ export function mostrarCorrecto(input,elementoError,){
 
 export function mostrarUsuario(usuario){
     alert ("usuario : " + JSON.stringify(usuario));
+}
+
+export function mostrarAlerta(mensaje,tipo="success"){
+    let contenedor = document.querySelector(".contenedor-alertas");
+
+    if (!contenedor) {
+        contenedor = document.createElement("div");
+        contenedor.className = "contenedor-alertas";
+        document.body.appendChild(contenedor);
+    }
+
+    const alerta = document.createElement("div");
+    alerta.className = "alerta-personalizada " + tipo;
+    alerta.textContent = mensaje;
+    contenedor.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.classList.add("mostrar");
+    }, 50);
+
+    setTimeout(() => {
+        alerta.classList.remove("mostrar");
+        setTimeout(() => {
+            alerta.remove();
+        }, 300);
+    }, 2600);
+}
+
+export function mostrarErrorGeneral(mensaje){
+    mostrarAlerta(mensaje,"error");
+}
+
+export function mostrarExito(mensaje){
+    mostrarAlerta(mensaje,"success");
 }

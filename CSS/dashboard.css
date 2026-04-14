@@ -253,3 +253,112 @@ body{
     align-items: center;
     border-radius: 999px;
 }
+
+.seccion-bancaria {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.modulo-bancario.oculto,
+.resumen-transaccion.oculto {
+    display: none;
+}
+
+.form-bancario {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    margin-top: 1rem;
+}
+
+.form-bancario input,
+.form-bancario select {
+    padding: .85rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    width: 100%;
+}
+
+.form-bancario button {
+    margin-top: .5rem;
+    padding: .9rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+}
+
+.mensaje-error {
+    color: var(--error);
+    font-size: .9rem;
+    min-height: 18px;
+}
+
+.resumen-transaccion {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f8fbff;
+}
+
+.tabla-transacciones-wrap {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+.tabla-transacciones {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-transacciones th,
+.tabla-transacciones td {
+    text-align: left;
+    padding: .85rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .95rem;
+}
+
+.sin-movimientos {
+    margin-top: 1rem;
+    color: var(--text-muted);
+}
+
+.contenedor-alertas {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.alerta-personalizada {
+    min-width: 240px;
+    max-width: 340px;
+    padding: .9rem 1rem;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: .3s ease;
+}
+
+.alerta-personalizada.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alerta-personalizada.success {
+    background: #10B981;
+}
+
+.alerta-personalizada.error {
+    background: #EF4444;
+}

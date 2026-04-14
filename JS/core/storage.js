@@ -18,15 +18,20 @@ export function guardarUsuario(usuario) {
     return true;
 }
 
-export function obtenerTransacciones(numeroReferencia) {
+export function obtenerTransacciones(numeroCuenta) {
     const transferencias = JSON.parse(localStorage.getItem("transferencias"));
     if (!transferencias) {
         return []
     }
 
-    const tranferencia = transferencias.slice(-10);
+    if (!numeroCuenta) {
+        return transferencias.slice(-10);
+    }
+
+    const tranferencia = transferencias.filter(t => t.numCuenta === numeroCuenta).slice(-10).reverse();
     return tranferencia;
 }
+
 export function guardarTransacciones(transaccion) {
     let transferencias = JSON.parse(localStorage.getItem("transferencias"));
     if (!transferencias) {
@@ -37,3 +42,23 @@ export function guardarTransacciones(transaccion) {
     return true;
 }
 
+export function actualizarUsuario(usuarioActualizado) {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+    if (!usuarios) {
+        usuarios = [];
+    }
+
+    let indiceU = usuarios.findIndex(u => u.numeroDoc === usuarioActualizado.numeroDoc);
+
+    if (indiceU !== -1) {
+        usuarios[indiceU] = usuarioActualizado;
+    } else {
+        usuarios.push(usuarioActualizado);
+    }
+
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActualizado));
+    localStorage.setItem("acmeUser", JSON.stringify(usuarioActualizado));
+    localStorage.setItem("sessionUser", JSON.stringify(usuarioActualizado));
+    return true;
+}
