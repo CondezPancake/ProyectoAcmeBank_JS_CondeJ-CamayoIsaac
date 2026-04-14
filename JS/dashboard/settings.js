@@ -106,6 +106,26 @@ goHome.addEventListener("click", function(){
     window.location.href = "dashboard.html";
 })
 
+document.getElementById("navTransacciones")
+    .addEventListener("click", () => {
+        window.location.href = "dashboard.html?modulo=transacciones";
+    });
+
+document.getElementById("navConsignar")
+    .addEventListener("click", () => {
+        window.location.href = "dashboard.html?modulo=consignar";
+    });
+
+document.getElementById("navRetirar")
+    .addEventListener("click", () => {
+        window.location.href = "dashboard.html?modulo=retirar";
+    });
+
+document.getElementById("navServicios")
+    .addEventListener("click", () => {
+        window.location.href = "dashboard.html?modulo=servicios";
+    });
+
 //------------EVENT PROFILE-NOTIFICATION PANEL--------------//
 document.addEventListener("click", function (e) {
     if (!notificationsPanel.contains(e.target) && !notificationToggle.contains(e.target)) {

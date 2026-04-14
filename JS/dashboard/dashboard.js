@@ -351,29 +351,17 @@ function pintarResumen(idResumen, transaccion){
 
 crearSeccionBancaria();
 
-if (sidebarItems[2]) {
-    sidebarItems[2].addEventListener("click", function(){
-        mostrarModulo("moduloTransacciones");
-    });
-}
+document.getElementById("navTransacciones")
+    .addEventListener("click", () => mostrarModulo("moduloTransacciones"));
 
-if (sidebarItems[3]) {
-    sidebarItems[3].addEventListener("click", function(){
-        mostrarModulo("moduloConsignacion");
-    });
-}
+document.getElementById("navConsignar")
+    .addEventListener("click", () => mostrarModulo("moduloConsignacion"));
 
-if (sidebarItems[4]) {
-    sidebarItems[4].addEventListener("click", function(){
-        mostrarModulo("moduloRetiro");
-    });
-}
+document.getElementById("navRetirar")
+    .addEventListener("click", () => mostrarModulo("moduloRetiro"));
 
-if (sidebarItems[5]) {
-    sidebarItems[5].addEventListener("click", function(){
-        mostrarModulo("moduloServicios");
-    });
-}
+document.getElementById("navServicios")
+    .addEventListener("click", () => mostrarModulo("moduloServicios"));
 
 if (cards[0]) {
     cards[0].addEventListener("click", function(){
@@ -391,4 +379,24 @@ if (cards[2]) {
     cards[2].addEventListener("click", function(){
         mostrarModulo("moduloConsignacion");
     });
+}
+
+const params = new URLSearchParams(window.location.search);
+const modulo = params.get("modulo");
+
+if (modulo) {
+    switch (modulo) {
+        case "transacciones":
+            mostrarModulo("moduloTransacciones");
+            break;
+        case "consignar":
+            mostrarModulo("moduloConsignacion");
+            break;
+        case "retirar":
+            mostrarModulo("moduloRetiro");
+            break;
+        case "servicios":
+            mostrarModulo("moduloServicios");
+            break;
+    }
 }
