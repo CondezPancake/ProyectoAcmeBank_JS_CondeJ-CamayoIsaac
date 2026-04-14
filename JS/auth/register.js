@@ -222,7 +222,7 @@ btnRegistro.addEventListener("click",(event)=>{
         };
 
         //mostrar resumen, se puede hacer luego con innerHTML, provisional para los requerimientos
-        alertas.mostrarUsuario(usuario)
+        alert("Usuario registrado con éxito\n\nResumen:\nTipo de Documento: "+usuario.tipoDoc+"\nNúmero de Documento: "+usuario.numeroDoc+"\nNombres: "+usuario.nombres+"\nApellidos: "+usuario.apellidos+"\nGénero: "+usuario.genero+"\nTeléfono: "+usuario.telefono+"\nEmail: "+usuario.email+"\nDirección: "+usuario.direccion+"\nCiudad: "+usuario.ciudad);
         
         funciones.guardarUsuario(usuario);
         window.location.href="index.html";
