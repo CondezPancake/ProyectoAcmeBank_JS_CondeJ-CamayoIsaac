@@ -13,6 +13,7 @@ import { hacerConsignacion } from "./deposit.js";
 import { hacerRetiro } from "./withdraw.js";
 import { pagarServicio } from "./services.js";
 import { pintarTransacciones } from "./transactions.js";
+import { hacerRecarga } from "./recargas.js";
 import * as alertas from "../ui/alerts.js";
 
 // --- Referencias a elementos de la barra de navegación superior ---
@@ -255,6 +256,32 @@ function crearSeccionBancaria() {
             </form>
             <div class="resumen-transaccion oculto" id="resumenServicio"></div>
         </div>
+
+        <!-- Módulo: Recargas telefonicas -->
+        <div class="card modulo-bancario oculto" id="moduloRecargas">
+            <h2>Recarga telefonica</h2>
+            <form class="form-bancario" id="formRecargas">
+                <p><strong>Número de cuenta:</strong> <span>${userData.cuenta.numCuenta}</span></p>
+                <p><strong>Nombre:</strong> <span>${userData.nombres} ${userData.apellidos}</span></p>
+                <label for="tipoOperador">Servicio</label>
+                <select id="operador">
+                        <option value="">Selecciona</option>
+                        <option value="MovilNet">MovilNet</option>
+                        <option value="Amber Phone">Amber Phone</option>
+                        <option value="Dynaphone">Dynaphone</option>
+                        <option value="SkyPhone">SkyPhone</option>
+                </select>
+                <small class="mensaje-error" id="errorOperador"></small>
+                <label for="referenciaServicio">numero de telefono</label>
+                <input type="number" id="numeroRecarga" placeholder="Ingresa el numero">
+                <small class="mensaje-error" id="errorNumeroRecarga"></small>
+                <label for="valorRecarga">Valor de la recarga</label>
+                <input type="number" id="valorRecarga" min="1" placeholder="Ingresa el valor a recargar">
+                <small class="mensaje-error" id="errorValorRecarga"></small>
+                <button type="submit">Pagar servicio</button>
+            </form>
+            <div class="resumen-transaccion oculto" id="resumenRecarga"></div>
+        </div>
     `;
 
     mainContent.appendChild(seccionBancaria);
@@ -319,6 +346,7 @@ function activarEventosBancarios() {
     const formConsignacion = document.getElementById("formConsignacion");
     const formRetiro = document.getElementById("formRetiro");
     const formServicios = document.getElementById("formServicios");
+    const formRecargas = document.getElementById("formServicios");
 
     // --- Formulario de consignación ---
     formConsignacion.addEventListener("submit", function (e) {
@@ -368,7 +396,7 @@ function activarEventosBancarios() {
     });
 
     // --- Formulario de pago de servicios ---
-    formServicios.addEventListener("submit", function (e) {
+    formServicios.addEventListener("submit", (e) =>{
         e.preventDefault();
         limpiarError("errorServicio");
         limpiarError("errorReferenciaServicio");
@@ -378,6 +406,32 @@ function activarEventosBancarios() {
         const referenciaServicio = document.getElementById("referenciaServicio").value;
         const valorServicio = document.getElementById("valorServicio").value;
         const resultado = pagarServicio(userData, tipoServicio, referenciaServicio, valorServicio);
+
+        if (!resultado.ok) {
+            // Mostrar el error en el campo específico según el mensaje recibido
+            if (resultado.mensaje.includes("Selecciona")) {
+                document.getElementById("errorServicio").textContent = resultado.mensaje;
+            } else if (resultado.mensaje.includes("referencia")) {
+                document.getElementById("errorReferenciaServicio").textContent = resultado.mensaje;
+            } else {
+                document.getElementById("errorValorServicio").textContent = resultado.mensaje;
+            }
+            alertas.mostrarErrorGeneral(resultado.mensaje);
+            return;
+    }
+    });
+
+    // --- Formulario de pago de recargas ---
+    formRecargas.addEventListener("submit", function (e) {
+        e.preventDefault();
+        limpiarError("errorOperador");
+        limpiarError("errorNumeroRecarga");
+        limpiarError("errorValorRecarga");
+
+        const tipoOperador = document.getElementById("operador").value;
+        const numeroRecarga = document.getElementById("numeroRecarga").value.trim();
+        const valorRecarga = document.getElementById("valorRecarga").value.trim();
+        const resultado = pagarServicio(userData, tipoOperador, numeroRecarga, valorRecarga);
 
         if (!resultado.ok) {
             // Mostrar el error en el campo específico según el mensaje recibido
@@ -442,6 +496,9 @@ document.getElementById("navRetirar")
 document.getElementById("navServicios")
     .addEventListener("click", () => mostrarModulo("moduloServicios"));
 
+document.getElementById("navRecargas")
+    .addEventListener("click", () => mostrarModulo("moduloRecargas"));
+
 // --- Eventos de las tarjetas (cards) del dashboard para acceso rápido a módulos ---
 if (cards[0]) {
     cards[0].addEventListener("click", function () {
@@ -458,6 +515,12 @@ if (cards[1]) {
 if (cards[2]) {
     cards[2].addEventListener("click", function () {
         mostrarModulo("moduloConsignacion");
+    });
+}
+
+if (cards[3]) {
+    cards[3].addEventListener("click", function () {
+        mostrarModulo("moduloRecargas");
     });
 }
 
@@ -479,6 +542,9 @@ if (modulo) {
             break;
         case "servicios":
             mostrarModulo("moduloServicios");
+            break;
+        case "Recargas":
+            mostrarModulo("moduloRecargas");
             break;
     }
 }
